@@ -1,3 +1,3 @@
 # Data Structures & Algorithms
 
-Since javascript does not have native support for structures these are a collection of implementations
+Since javascript does not have native support for certain structures these are a collection of implementations.
