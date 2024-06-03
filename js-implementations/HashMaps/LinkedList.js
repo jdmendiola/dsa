@@ -2,7 +2,6 @@ const Node = require('./Node');
 
 class LinkedList {
   constructor() {
-    //empty linked list will have a null head
     this.head = null;
   }
 
@@ -10,8 +9,6 @@ class LinkedList {
     const newHead = new Node(data);
     const currentHead = this.head;
     this.head = newHead;
-
-    // shift head to next node if there is a head
     if (currentHead) {
       this.head.setNextNode(currentHead);
     }
