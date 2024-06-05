@@ -1,51 +1,64 @@
-const Node = require('./node');
+const Node = require('./Node');
 
 class LinkedList {
   constructor() {
     this.head = null;
   }
 
-  addToHead(data) {
-    const newHead = new Node(data);
+  addToHead(value) {
+    const nextNode = new Node(value);
     const currentHead = this.head;
-    this.head = newHead;
+    this.head = nextNode;
     if (currentHead) {
       this.head.setNextNode(currentHead);
     }
   }
 
-  addToTail(data) {
-    let tail = this.head;
-    if (!tail) {
-      this.head = new Node(data);
+  addToTail(value) {
+    let lastNode = this.head;
+    if (!lastNode) {
+      this.head = new Node(value);
     } else {
-      while (tail.getNextNode() !== null) {
-        tail = tail.getNextNode();
+      let temp = this.head;
+      while (temp.getNextNode() !== null) {
+        temp = temp.getNextNode();
       }
-      tail.setNextNode(new Node(data));
+      temp.setNextNode(new Node(value));
     }
+  }
+
+  findNodeIteratively(comparator) {
+    let current = this.head;
+
+    while (current) {
+      if (comparator(current.value)) {
+        return current;
+      }
+      current = current.getNextNode();
+    }
+    return null;
   }
 
   removeHead() {
     const removedHead = this.head;
-    if (!removedHead) {
-      return;
+    if (!removedHead) return;
+
+    if (removedHead.next) {
+      this.head = removedHead.next;
     }
-    this.head = removedHead.getNextNode();
     return removedHead.data;
   }
 
-  printList() {
+  get size() {
+    let count = 0;
     let currentNode = this.head;
-    let output = '<head> ';
-    while (currentNode !== null) {
-      output += currentNode.data + ' ';
-      currentNode = currentNode.getNextNode();
-    }
-    output += '<tail>';
-    console.log(output);
-  }
 
+    while (currentNode !== null) {
+      count++;
+      currentNode = currentNode.next;
+    }
+    return count;
+  }
 }
 
 module.exports = LinkedList;
