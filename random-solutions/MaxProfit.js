@@ -8,11 +8,13 @@ For example, given the list [17, 11, 60, 25, 150, 75, 31, 120], you can assume t
 
 */
 
-function maxProfit(arr, smallestIndex = 0, largestIndexAhead = 0){
+function maxProfit(arr){
 
   let small = arr[0];
   let large = 0;
   let calcMax = 0;
+  let smallestIndex = 0;
+  let largestIndexAhead = 0;
 
   for (let index = 0; index < arr.length; index++) {
     
